@@ -44,19 +44,19 @@ variable "flow_timeout_in_minutes" {
 
 variable "ddos_protection_plan" {
   description = "The DDoS protection plan associated with the virtual network"
-  type = list(object({
+  type = object({
     id     = string
     enable = bool
-  }))
-  default = []
+  })
+  default = null
 }
 
 variable "encryption" {
   description = "The encryption associated with the virtual network"
-  type = list(object({
+  type = object({
     enforcement = string
-  }))
-  default = []
+  })
+  default = null
 }
 
 variable "tags" {

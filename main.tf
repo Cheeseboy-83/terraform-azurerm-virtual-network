@@ -10,7 +10,7 @@ resource "azurerm_virtual_network" "vnet" {
   flow_timeout_in_minutes = var.flow_timeout_in_minutes
 
   dynamic "ddos_protection_plan" {
-    for_each = var.ddos_protection_plan
+    for_each = var.ddos_protection_plan != null ? [var.ddos_protection_plan] : []
 
     content {
       id     = ddos_protection_plan.value.id
@@ -19,7 +19,7 @@ resource "azurerm_virtual_network" "vnet" {
   }
 
   dynamic "encryption" {
-    for_each = var.encryption
+    for_each = var.encryption != null ? [var.encryption] : []
 
     content {
       enforcement = encryption.value.enforcement
